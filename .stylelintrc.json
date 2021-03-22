@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-recess-order"],
+  "rules": {
+    "indentation": "tab",
+    "string-quotes": "double",
+    "number-leading-zero": null,
+    "unit-whitelist": ["em", "rem", "s", "px", "%", "deg", "vw", "vh", "fr"]
+  },
+  "ignoreDisables": false,
+  "ignoreFiles": ["**/*", "!**/*.css", "!**/*.less", "!**/*.scss"]
+}

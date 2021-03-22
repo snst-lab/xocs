@@ -1,0 +1,24 @@
+#node modules
+**/node_modules
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+
+# enviroment file for docker-compose.yml
+.env*
+
+# distribution
+dist
+
+# ftp account
+.vscode/sftp.json
+
+## archive directory and personal memo
+.archive
+NOTE.md
+
+## css chache
+.css
+.sass-cache
+
+
