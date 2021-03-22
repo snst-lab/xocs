@@ -47,3 +47,4 @@ export type ImageMIn = iImageMin;
  */
 const xocs = new Core();
 export { xocs as default, xocs as xocs };
+module.exports = xocs;
