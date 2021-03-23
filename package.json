@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "private": false,
   "description": "Minimal and lightweight task runner for front-end web development",
   "keywords": [
@@ -23,6 +23,7 @@
   },
   "files": [
     "@types",
+    "bin",
     "interfaces",
     "modules",
     "scripts",
