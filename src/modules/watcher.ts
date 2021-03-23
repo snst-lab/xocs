@@ -14,6 +14,9 @@ export class Watcher implements iWatcher {
   private watcher: FSWatcher | null;
   private thread: Thread;
   private runAtStart: boolean;
+  private runAtOnce: boolean;
+  private throttle: number;
+  private listen: boolean;
   public callback: (thread?: Thread, path?: string, event?: string) => void;
   /**
    * Creates an instance of Watcher.
@@ -37,6 +40,9 @@ export class Watcher implements iWatcher {
     this.watcher = null;
     this.thread = thread;
     this.runAtStart = false;
+    this.runAtOnce = false;
+    this.throttle = 0;
+    this.listen = true;
     this.callback = () => {
       return;
     };
@@ -70,22 +76,29 @@ export class Watcher implements iWatcher {
       this.start(srcPattern, option);
       //
       //
-    } else if (args[0] !== true && typeof args[1] === "function") {
-      const option = args[1] as WatchOption;
-      delete option.runAtStart;
-      this.callback = args[1] as () => void;
-      this.start(srcPattern, option);
-      //
-      //
     } else if (
-      args[0] !== true &&
+      typeof args[0] !== "boolean" &&
       typeof args[0] !== "undefined" &&
-      (args[0] as WatchOption).runAtStart === true
+      typeof args[1] === "function"
     ) {
       const option = args[0] as WatchOption;
-      delete option.runAtStart;
+
       this.callback = args[1] as () => void;
-      this.runAtStart = true;
+      this.runAtStart =
+        typeof option.runAtStart !== "undefined"
+          ? (option.runAtStart as boolean)
+          : false;
+      this.runAtOnce =
+        typeof option.runAtOnce !== "undefined"
+          ? (option.runAtStart as boolean)
+          : false;
+      this.throttle =
+        typeof option.throttle !== "undefined"
+          ? (option.throttle as number)
+          : 0;
+      delete option.runAtStart;
+      delete option.runAtOnce;
+      delete option.throttle;
       this.start(srcPattern, option);
       //
       //
@@ -117,6 +130,12 @@ export class Watcher implements iWatcher {
     this.watcher.on("ready", () => {
       log.info(`Watching file changes in ${log.yellow(_srcPattern)}`);
 
+      if (this.throttle > 0) {
+        setInterval(() => {
+          this.listen = true;
+        }, this.throttle);
+      }
+
       if (this.runAtStart) {
         this.thread.isWatch = true;
         this.thread.unlink = false;
@@ -127,32 +146,37 @@ export class Watcher implements iWatcher {
         } else if (typeof _srcPattern !== "string") {
           for (const e of _srcPattern) {
             const paths = new GlobSync(e).found;
+
             for (const f of paths) {
               this.thread.pathMap = [[normNoDot(f), null]];
               // ! If pathMap updated to includes multi files, skip callback
               if (!this.thread.pathMap[1]) {
                 this.callback(this.thread, "", "ready");
               }
+              if (this.runAtOnce) break;
             }
+            if (this.runAtOnce) break;
           }
         }
       }
 
       this.watcher?.on("all", (event, path) => {
-        this.thread.isWatch = true;
-        this.thread.pathMap = [[normNoDot(path), null]];
-
-        if (event === "add" || event === "change") {
-          this.thread.unlink = false;
-          // ! If pathMap updated to includes multi files, skip callback
-          // if (!this.thread.pathMap[1]) {
-          this.callback(this.thread, path, event);
-          // }
-        } else if (event === "unlink") {
-          this.thread.unlink = true;
-          // ! If pathMap updated to includes multi files, skip callback
-          if (!this.thread.pathMap[1]) {
-            this.callback(this.thread, path, event);
+        if (this.listen) {
+          this.listen = this.throttle > 0 ? false : true;
+          this.thread.isWatch = true;
+          this.thread.pathMap = [[normNoDot(path), null]];
+          if (event === "add" || event === "change") {
+            // ! If pathMap updated to includes multi files, skip callback
+            if (!this.thread.pathMap[1]) {
+              this.thread.unlink = false;
+              this.callback(this.thread, path, event);
+            }
+          } else if (event === "unlink") {
+            // ! If pathMap updated to includes multi files, skip callback
+            if (!this.thread.pathMap[1]) {
+              this.thread.unlink = true;
+              this.callback(this.thread, path, event);
+            }
           }
         }
       });

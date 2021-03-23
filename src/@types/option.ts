@@ -32,6 +32,8 @@ export type ProcessOption =
  */
 export interface WatchOption extends ChokidarOption {
   runAtStart?: boolean;
+  runAtOnce?: boolean;
+  throttle?: number;
 }
 /**
  * @export

@@ -68,4 +68,4 @@ xocs.task("preview", () => {
 /**
  * @dev Execute registered tasks
  */
-// xocs.run("compile");
+xocs.run("compile", "preview");
