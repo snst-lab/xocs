@@ -23,7 +23,7 @@ import conf from "./config";
 import store from "./store";
 import { GlobSync } from "glob";
 import { statSync, renameSync } from "fs";
-import { spawnSync } from "child_process";
+import { execSync } from "child_process";
 /**
  *
  *
@@ -234,13 +234,20 @@ export class Thread implements iThread {
    * @memberof Thread
    */
   exec(command: string): Thread {
-    const splitedCommand = command.split(" ");
-    const args = splitedCommand.filter((e, i) => i > 0);
-    spawnSync(splitedCommand[0], [...args], {
-      env: process.env,
-      cwd: __dirname,
+    log.ready(command);
+    execSync(command, {
       stdio: "inherit",
     });
+    log.done(command);
+
+    // const splitedCommand = command.split(" ");
+    // const args = splitedCommand.filter((e, i) => i > 0);
+
+    // spawnSync(splitedCommand[0], [...args], {
+    //   env: process.env,
+    //   cwd: __dirname,
+    //   stdio: "inherit",
+    // });
     return this;
   }
   /**

@@ -17,7 +17,7 @@ export class Config implements iConfig {
    */
   constructor() {
     this.defaultOptions = {
-      envFile: ".env",
+      env: ".env",
       srcRoot: "src",
       publicRoot: "public",
       watch: {
@@ -76,7 +76,7 @@ export class Config implements iConfig {
     this.options = Object.assign(this.defaultOptions, options);
     // eslint-disable-next-line
     require("dotenv").config({
-      path: npmRoot + "/" + this.options.envFile,
+      path: npmRoot + "/" + this.options.env,
     });
   }
   /**
@@ -89,7 +89,7 @@ export class Config implements iConfig {
     this.options = Object.assign(this.defaultOptions, options);
     // eslint-disable-next-line
     require("dotenv").config({
-      path: npmRoot + "/" + this.options.envFile,
+      path: npmRoot + "/" + this.options.env,
     });
     log.line();
     console.log(this.options);

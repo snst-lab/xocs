@@ -8,7 +8,7 @@ import { ProcessOptions, AcceptedPlugin } from "postcss";
  * @interface Options
  */
 export interface Options {
-  envFile?: string;
+  env?: string;
   srcRoot?: string;
   publicRoot?: string;
   watch?: WatchOption;

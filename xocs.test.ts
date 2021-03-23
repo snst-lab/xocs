@@ -1,10 +1,10 @@
-import { xocs, Thread } from "./dist";
+import xocs, { Thread } from "./dist";
 
 /**
  * @dev Initialize 'xocs' procedure with srcRoot & publicRoot.
  */
 xocs.init({
-  envFile: ".env.development", // default is s".env"
+  env: ".env.development", // default is s".env"
   srcRoot: "test/src", // default is "src"
   publicRoot: "test/public", // default is "public"
 });
@@ -68,4 +68,4 @@ xocs.task("preview", () => {
 /**
  * @dev Execute registered tasks
  */
-xocs.run("compile");
+// xocs.run("compile");

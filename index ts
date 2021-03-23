@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.xocs = void 0;
+const core_1 = require("./modules/core");
+const xocs = new core_1.Core();
+exports.default = xocs;
+exports.xocs = xocs;

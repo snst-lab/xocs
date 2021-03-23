@@ -45,6 +45,5 @@ export type ImageMIn = iImageMin;
 /**
  * @dev Core instance
  */
-const xocs = new Core();
-export { xocs as default, xocs as xocs };
-module.exports = xocs;
+const core: Core = new Core();
+export { core as default, core as xocs };

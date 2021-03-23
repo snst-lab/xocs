@@ -1,10 +1,12 @@
+const xocs = require("./dist").default;
+
 /**
  * @dev Initialize 'xocs' procedure with srcRoot & publicRoot.
  */
-const xocs = require("xocs").init({
-  env: ".env.development", // default is ".env"
-  srcRoot: "src", // default is "src"
-  publicRoot: "public", // default is "public"
+xocs.init({
+  env: ".env.development", // default is s".env"
+  srcRoot: "test/src", // default is "src"
+  publicRoot: "test/public", // default is "public"
 });
 
 const { srcRoot, publicRoot } = xocs.config;
@@ -20,12 +22,18 @@ xocs.task("compile", () => {
   xocs.watch(srcRoot + "/assets/js/**/*.js", (thread) => {
     thread.copy();
   });
-  xocs.watch(srcRoot + "/assets/css/**/*.scss", (thread) => {
-    thread.sass().postcss();
-  });
-  xocs.watch(srcRoot + "/assets/img/**/*.@(jpg|jpeg|png|gif|svg|webp)", (thread) => {
-    thread.imagemin();
-  });
+  xocs.watch(
+    [srcRoot + "/assets/css/**/s*.scss", srcRoot + "/assets/css/**/w*.scss"],
+    (thread) => {
+      thread.sass().postcss();
+    }
+  );
+  xocs.watch(
+    srcRoot + "/assets/img/**/*.@(jpg|jpeg|png|gif|svg|webp)",
+    (thread) => {
+      thread.imagemin();
+    }
+  );
 });
 
 /**
@@ -49,13 +57,15 @@ xocs.task("preview", () => {
   });
 
   // Upload file to remote host when files in public directory are updated & run BrowserSync
-  xocs.watch([publicRoot + "/assets/**/*", publicRoot + "/pages/**/*"], (thread) => {
-    thread.upload();
-    thread.reload();
-  });
+  xocs.watch(
+    [publicRoot + "/assets/**/*", publicRoot + "/pages/**/*"],
+    (thread) => {
+      thread.upload().reload();
+    }
+  );
 });
 
 /**
  * @dev Execute registered tasks
  */
-xocs.run("compile", "preview");
+// xocs.run("compile");

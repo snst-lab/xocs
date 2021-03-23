@@ -4,6 +4,9 @@
 **/yarn.lock
 **/pnpm-lock.yaml
 
+# log file
+**/*.log
+
 # enviroment file for docker-compose.yml
 .env*
 

@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "private": false,
   "description": "Minimal and lightweight task runner for front-end web development",
   "keywords": [
@@ -23,7 +23,6 @@
   },
   "files": [
     "@types",
-    "bin",
     "interfaces",
     "modules",
     "scripts",
@@ -37,10 +36,10 @@
   },
   "scripts": {
     "build": "npx tsc && npx tsc-alias & cp -a src/scripts/. dist/scripts/",
-    "cli": "node dist/bin/cli.js",
-    "proc": "ts-node -r tsconfig-paths/register xocs.test.ts",
+    "cli:ts": "ts-node dist/bin/cli.js -p xocs.test.ts",
+    "cli:js": "node dist/bin/cli.js -p xocs.test.js",
     "test": "npm run build && npx mocha -r ts-node/register -r tsconfig-paths/register --timeout 30000 test/index.ts",
-    "prepublishOnly": "npm run build && make prepublish",
+    "prepublishOnly": "make prepublish",
     "postpublish": "make postpublish",
     "preinstall": "",
     "postinstall": "node scripts/postinstall.js"
