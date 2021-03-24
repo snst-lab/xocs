@@ -8,10 +8,6 @@ import {
   iBrowser,
   iRemote,
   iProcessor,
-  iCopy,
-  iSass,
-  iPostCss,
-  iImageMin,
 } from "@interfaces/index";
 
 /**
@@ -37,10 +33,6 @@ export type Watcher = iWatcher;
 export type Browser = iBrowser;
 export type Remote = iRemote;
 export type Processor = iProcessor;
-export type Copy = iCopy;
-export type Sass = iSass;
-export type PostCss = iPostCss;
-export type ImageMIn = iImageMin;
 
 /**
  * @dev Core instance

@@ -1,12 +1,11 @@
 import { Path, ImageMinOption } from "@types";
-import { iProcessor } from "@interfaces/index";
+import { iProcessor } from "./processor";
 /**
  *
  *
  * @export
  * @interface iImageMin
- * @extends {iProcessor}
  */
 export interface iImageMin extends iProcessor {
-  process(_srcPath: Path, _distPath: Path, options?: ImageMinOption): void;
+  process(srcPath: Path, distPath: Path, options?: ImageMinOption): void;
 }

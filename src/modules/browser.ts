@@ -3,7 +3,6 @@ import { iBrowser } from "@interfaces/index";
 import { log } from "@utils/index";
 import { init, reload, BrowserSyncInstance } from "browser-sync";
 import conf from "@modules/config";
-
 /**
  *
  *

@@ -12,7 +12,10 @@ import conf from "./config";
  */
 export class Copy extends Processor implements iCopy {
   private options: CopyOption;
-
+  /**
+   * Creates an instance of Copy.
+   * @memberof Copy
+   */
   constructor() {
     super();
     this.options = conf.options.copy || {};

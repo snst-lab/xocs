@@ -1,12 +1,11 @@
 import { Path, SassOption } from "@types";
-import { iProcessor } from "@interfaces/index";
+import { iProcessor } from "./processor";
 /**
  *
  *
  * @export
  * @interface iSass
- * @extends {iProcessor}
  */
 export interface iSass extends iProcessor {
-  process(_srcPath: Path, _distPath: Path, options?: SassOption): void;
+  process(srcPath: Path, distPath: Path, options?: SassOption): void;
 }

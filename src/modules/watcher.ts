@@ -130,20 +130,16 @@ export class Watcher implements iWatcher {
     this.watcher.on("ready", () => {
       log.info(`Watching file changes in ${log.yellow(_srcPattern)}`);
 
-      if (this.throttle > 0) {
-        setInterval(() => {
-          this.listen = true;
-        }, this.throttle);
-      }
-
       if (this.runAtStart) {
         this.thread.isWatch = true;
         this.thread.unlink = false;
         if (typeof _srcPattern === "string") {
+          // ! If string passed , procedure as single glob pattern
           this.thread.pathMap = [[normNoDot(_srcPattern), null]];
           this.callback(this.thread, "", "ready");
           //
         } else if (typeof _srcPattern !== "string") {
+          // ! If array passed , loop for each glob patterns
           for (const e of _srcPattern) {
             const paths = new GlobSync(e).found;
 
@@ -162,7 +158,14 @@ export class Watcher implements iWatcher {
 
       this.watcher?.on("all", (event, path) => {
         if (this.listen) {
-          this.listen = this.throttle > 0 ? false : true;
+          // ! No loop for each files watched within throttle time.
+          if (this.throttle > 0) {
+            this.listen = false;
+            setTimeout(() => {
+              this.listen = true;
+            }, this.throttle);
+          }
+          //
           this.thread.isWatch = true;
           this.thread.pathMap = [[normNoDot(path), null]];
           if (event === "add" || event === "change") {

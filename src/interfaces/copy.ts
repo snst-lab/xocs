@@ -1,10 +1,11 @@
 import { Path, CopyOption } from "@types";
-import { iProcessor } from "@interfaces/index";
-
+import { iProcessor } from "./processor";
 /**
+ *
+ *
  * @export
  * @interface iCopy
  */
 export interface iCopy extends iProcessor {
-  process(_srcPath: Path, _distPath: Path, options?: CopyOption): void;
+  process(srcPath: Path, distPath: Path, options?: CopyOption): void;
 }

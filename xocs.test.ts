@@ -1,4 +1,4 @@
-import xocs, { Thread } from "./dist";
+import { xocs, Thread } from "./dist";
 
 /**
  * @dev Initialize 'xocs' procedure with srcRoot & publicRoot.

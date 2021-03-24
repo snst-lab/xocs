@@ -1,6 +1,12 @@
 import { WatchOptions as ChokidarOption } from "chokidar";
 import { Options as BrowserSyncOption } from "browser-sync";
 import { ProcessOptions, AcceptedPlugin } from "postcss";
+import { Options as imageminPngQuantOptions } from "imagemin-pngquant";
+import imageminMozjpeg = require("imagemin-mozjpeg");
+import imageminGifsicle = require("imagemin-gifsicle");
+import imageminSvgo = require("imagemin-svgo");
+import imageminWebp = require("imagemin-webp");
+
 /**
  *
  *
@@ -92,9 +98,9 @@ export interface PostCssOption extends ProcessOptions {
 export interface ImageMinOption {
   timeout?: number;
   ext?: string;
-  mozjpeg: any;
-  pngquant: any;
-  gifsicle: any;
-  svgo: any;
-  webp: any;
+  pngquant: imageminPngQuantOptions;
+  mozjpeg: imageminMozjpeg.Options;
+  gifsicle: imageminGifsicle.Options;
+  svgo: imageminSvgo.Options;
+  webp: imageminWebp.Options;
 }

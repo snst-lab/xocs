@@ -12,7 +12,10 @@ import { existsSync, unlink } from "fs";
  */
 export abstract class Processor implements iProcessor {
   protected isDev: boolean;
-
+  /**
+   * Creates an instance of Processor.
+   * @memberof Processor
+   */
   constructor() {
     this.isDev = process.env.NODE_ENV === "development";
   }
@@ -25,6 +28,7 @@ export abstract class Processor implements iProcessor {
    * @return {*}  {Path}
    * @memberof Processor
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   process(srcPath: Path, distPath: Path, options?: ProcessOption): void {
     return;
   }

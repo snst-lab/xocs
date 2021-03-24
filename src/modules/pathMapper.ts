@@ -28,7 +28,15 @@ export class PathMapper {
   private isWatch: boolean;
   private unlink: boolean;
   private ext: string | null;
-
+  /**
+   * Creates an instance of PathMapper.
+   * @param {Options} options
+   * @param {Path} srcRoot
+   * @param {Path} distRoot
+   * @param {boolean} isWatch
+   * @param {boolean} unlink
+   * @memberof PathMapper
+   */
   constructor(
     options: Options,
     srcRoot: Path,
@@ -197,6 +205,7 @@ export class PathMapper {
    * @return {*}  {Result}
    * @memberof PathMapper
    */
+  // eslint-disable-next-line
   parse(args: any, prop: keyof Options, pathMap: PathMap): Result {
     try {
       if (!this.getExt(prop)) {
@@ -447,13 +456,16 @@ export class PathMapper {
         default:
           throw new Error("Too much arguments are passed");
       }
+      //
       return {
         success: true,
         message: "",
         pathMap: pathMap,
         option: option,
       };
+      //
     } catch (e) {
+      //
       return {
         success: false,
         message: e.message,

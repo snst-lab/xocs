@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "private": false,
   "description": "Minimal and lightweight task runner for front-end web development",
   "keywords": [

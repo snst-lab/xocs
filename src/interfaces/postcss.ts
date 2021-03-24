@@ -1,12 +1,11 @@
 import { Path, PostCssOption } from "@types";
-import { iProcessor } from "@interfaces/index";
+import { iProcessor } from "./processor";
 /**
  *
  *
  * @export
  * @interface iPostCss
- * @extends {iProcessor}
  */
 export interface iPostCss extends iProcessor {
-  process(_srcPath: Path, _distPath: Path, options?: PostCssOption): void;
+  process(srcPath: Path, distPath: Path, options?: PostCssOption): void;
 }

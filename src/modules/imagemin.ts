@@ -21,10 +21,12 @@ import conf from "./config";
  */
 export class ImageMin extends Processor implements iImageMin {
   private options: ImageMinOption;
-
+  /**
+   * Creates an instance of ImageMin.
+   * @memberof ImageMin
+   */
   constructor() {
     super();
-
     this.options = conf.options.imagemin || {
       timeout: 8000,
       mozjpeg: {},

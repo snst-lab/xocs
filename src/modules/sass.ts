@@ -14,7 +14,10 @@ import conf from "./config";
  */
 export class Sass extends Processor implements iSass {
   private options: SassOption;
-
+  /**
+   * Creates an instance of Sass.
+   * @memberof Sass
+   */
   constructor() {
     super();
     this.options = conf.options.sass || { ext: "css" };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as ora from "ora";
 import * as chalk from "chalk";
 /**

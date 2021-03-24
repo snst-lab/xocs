@@ -14,7 +14,10 @@ import conf from "./config";
  */
 export class PostCss extends Processor implements iPostCss {
   private options: PostCssOption;
-
+  /**
+   * Creates an instance of PostCss.
+   * @memberof PostCss
+   */
   constructor() {
     super();
     this.options = conf.options.postcss || { ext: "css" };

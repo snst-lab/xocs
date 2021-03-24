@@ -38,7 +38,10 @@ export class Thread implements iThread {
   public unlink: boolean;
   public pathMap: [Path | null, Path | null][];
   public isWatch: boolean;
-
+  /**
+   * Creates an instance of Thread.
+   * @memberof Thread
+   */
   constructor() {
     this._watcher = null;
     this.srcRoot =
