@@ -2,6 +2,7 @@ import { Options } from "@types";
 import { iConfig } from "@interfaces/index";
 import { log } from "@utils/index";
 import { path as npmRoot } from "app-root-path";
+import { GlobSync } from "glob";
 /**
  *
  *
@@ -48,8 +49,7 @@ export class Config implements iConfig {
         {
           ext: "css",
         },
-        // eslint-disable-next-line
-        require(npmRoot + "/postcss.config")
+        require(npmRoot + "/postcss.config") || {}
       ),
       imagemin: Object.assign(
         {
@@ -60,8 +60,7 @@ export class Config implements iConfig {
           svgo: {},
           webp: {},
         },
-        // eslint-disable-next-line
-        require(npmRoot + "/imagemin.config")
+        require(npmRoot + "/imagemin.config") || {}
       ),
     };
     this.options = this.defaultOptions;
@@ -72,7 +71,7 @@ export class Config implements iConfig {
    * @param {Options} [options]
    * @memberof Config
    */
-  async init(options?: Options): Promise<void> {
+  init(options?: Options): void {
     this.options = Object.assign(this.defaultOptions, options);
     // eslint-disable-next-line
     require("dotenv").config({
@@ -85,7 +84,7 @@ export class Config implements iConfig {
    * @param {Options} [options]
    * @memberof Config
    */
-  async reset(options?: Options): Promise<void> {
+  reset(options?: Options): void {
     this.options = Object.assign(this.defaultOptions, options);
     // eslint-disable-next-line
     require("dotenv").config({
