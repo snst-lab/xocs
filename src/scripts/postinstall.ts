@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { resolve } from "path";
 import { log } from "@utils/index";
 
-const npmRoot = process.cwd();
+const npmRoot = process.cwd() + "/../..";
 
 const creates = [
   [resolve(__dirname, "xocs.mix.js"), resolve(npmRoot, "xocs.mix.js")],

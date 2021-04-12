@@ -1,10 +1,10 @@
 {
   "name": "xocs",
-  "version": "0.1.3",
+  "version": "0.1.7",
   "private": false,
-  "description": "Simple and lightweight source processor, utilities, and minimal task runner",
+  "description": "Simple and lightweight source processor, utilities, and minimal task runner, which is useful for Front-end developments or Web productions",
   "keywords": [
-    "frontend",
+    "front-end",
     "web",
     "task",
     "watch",
@@ -17,7 +17,7 @@
     "browser-sync"
   ],
   "author": "Shunsuke Tanaka",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=10.13.0"
   },
@@ -54,7 +54,7 @@
     "@types/imagemin-webp": "^5.1.1",
     "@types/node": "^14.14.35",
     "autoprefixer": "^10.2.5",
-    "browser-sync": "^2.26.14",
+    "browser-sync": "2.26.14",
     "chalk": "^4.1.0",
     "chokidar": "^3.5.1",
     "dotenv": "^8.2.0",
