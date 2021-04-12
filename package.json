@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "description": "Simple and lightweight source processor, utilities, and minimal task runner, which is useful for Front-end developments or Web productions",
   "keywords": [
