@@ -70,6 +70,9 @@ export class PathMapper {
       this.distRoot = this.distRoot + "/" + normNoDot(additionalDistDir);
     }
     pathStr = normNoDot(pathStr);
+    pathStr = new RegExp("^" + this.srcRoot).test(pathStr)
+      ? pathStr
+      : this.srcRoot + "/" + pathStr;
 
     if (!isGlob(pathStr)) {
       const _distPath = this.distRoot + pathStr.replace(this.srcRoot, "");

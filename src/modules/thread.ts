@@ -79,6 +79,11 @@ export class Thread implements iThread {
           callback: (rag0: Thread, arg1: string, arg2: string) => void
         ]
   ): Thread {
+    // if (typeof srcPattern === "string") {
+    //   srcPattern = this.srcRoot + "/" + normNoDot(srcPattern);
+    // } else {
+    //   srcPattern = srcPattern.map((e) => this.srcRoot + "/" + normNoDot(e));
+    // }
     this._watcher = new Watcher(this, srcPattern, ...args);
     return this;
   }

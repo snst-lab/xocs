@@ -22,12 +22,9 @@ xocs.task("compile", () => {
   xocs.watch(srcRoot + "/assets/js/**/*.js", (thread: Thread) => {
     thread.copy();
   });
-  xocs.watch(
-    [srcRoot + "/assets/css/**/s*.scss", srcRoot + "/assets/css/**/w*.scss"],
-    (thread: Thread) => {
-      thread.sass().postcss();
-    }
-  );
+  xocs.watch(srcRoot + "/assets/css/**/*.scss", (thread: Thread) => {
+    thread.sass().postcss();
+  });
   xocs.watch(
     srcRoot + "/assets/img/**/*.@(jpg|jpeg|png|gif|svg|webp)",
     (thread: Thread) => {

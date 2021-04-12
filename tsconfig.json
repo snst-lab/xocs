@@ -27,7 +27,8 @@
       "imagemin-mozjpeg",
       "imagemin-svgo",
       "imagemin-gifsicle",
-      "imagemin-webp"
+      "imagemin-webp",
+      "mocha"
     ]
   },
   "include": ["./src/**/*.ts", "./src/**/*.d.ts"],

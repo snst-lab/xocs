@@ -44,11 +44,10 @@ export class Browser implements iBrowser {
   reload(): void {
     setTimeout(() => {
       reload();
-      console.log("\n");
       log.line();
       log.done(`BrowserSync reloaded`);
       log.info(log.cyan(this.url));
       log.line();
-    }, 1000);
+    }, 100);
   }
 }

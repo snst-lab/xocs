@@ -137,7 +137,6 @@ export class Remote implements iRemote {
     }
     return [remotePath, remoteDir];
   }
-
   /**
    *
    *
@@ -160,44 +159,38 @@ export class Remote implements iRemote {
       }
     }
     const [remotePath, remoteDir] = this.calcRemotePath(_localPath, _remoteDir);
-    log.ready(
-      `Uploading... ${log.yellow(_localPath)} => [${log.cyan(
-        this.host
-      )}]${log.yellow(remotePath)}`
-    );
+
     try {
-      this.ftp.list(remoteDir, (err) => {
-        if (err) {
-          this.ftp.mkdir(remoteDir, true, (err) => {
-            if (err) {
-              throw new Error(err.message);
-            }
-            this.ftp.put(_localPath, remotePath, (err) => {
-              if (err) {
-                throw new Error(err.message);
-              }
-              complete = true;
-            });
-          });
-        } else {
+      setTimeout(() => {
+        log.loading(
+          `Uploading... ${log.yellow(_localPath)} => [${log.cyan(
+            this.host
+          )}]${log.yellow(remotePath)}`
+        );
+
+        this.ftp.mkdir(remoteDir, true, (err) => {
+          if (err) {
+            throw new Error(err.message);
+          }
           this.ftp.put(_localPath, remotePath, (err) => {
             if (err) {
               throw new Error(err.message);
             }
             complete = true;
           });
-        }
-      });
-
-      listen(500, this.timeout, () => complete)
-        .then(() => {
-          this.showProgress(_localPath, remotePath);
-        })
-        .catch(() => {
-          log.fail(
-            `[Failed to upload] Connection timeout ${this.timeout}ms exceeded`
-          );
         });
+
+        listen(500, this.timeout, () => complete)
+          .then(() => {
+            this.showProgress(_localPath, remotePath);
+          })
+          .catch(() => {
+            log.fail(
+              `[Failed to upload] Connection timeout ${this.timeout}ms exceeded`
+            );
+          });
+      }, 500);
+
       //
     } catch (err) {
       log.fail(err.message);
