@@ -30,9 +30,6 @@ xocx
 >
 > [TypeScript Support](#typescript_support)
 >
->
-> [Requirement](#requirement)
->
 > [Version](#version)
 >
 > [Contributing](#contributing)  
@@ -368,14 +365,6 @@ xocs.watch(srcRoot + "/assets/img/**/*.@(jpg|jpeg|png|gif|svg|webp)", ($: Thread
 
 <br>
 
-## Requirement
-
-### Node Version
-
-```sh
->=10.13.0
-```
-<br>
 
 ## Version
 We manage the project version on [VERSION.md](./docs/VERSION.md)
