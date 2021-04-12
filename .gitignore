@@ -11,7 +11,10 @@
 .env*
 
 # distribution
-dist
+dist/*
+!dist/scripts
+dist/scripts/*
+!dist/scripts/.gitkeep
 
 # ftp account
 .vscode/sftp.json
