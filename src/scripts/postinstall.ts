@@ -1,29 +1,24 @@
-import * as path from "path";
-import { path as npmRoot } from "app-root-path";
 import * as fs from "fs";
+import { resolve } from "path";
 import { log } from "@utils/index";
 
+const npmRoot = process.cwd();
+
 const creates = [
+  [resolve(__dirname, "xocs.mix.js"), resolve(npmRoot, "xocs.mix.js")],
+  [resolve(__dirname, ".browserslistrc"), resolve(npmRoot, ".browserslistrc")],
   [
-    path.resolve(__dirname, "xocs.mix.js"),
-    path.resolve(npmRoot, "xocs.mix.js"),
+    resolve(__dirname, "postcss.config.js"),
+    resolve(npmRoot, "postcss.config.js"),
   ],
   [
-    path.resolve(__dirname, ".browserslistrc"),
-    path.resolve(npmRoot, ".browserslistrc"),
-  ],
-  [
-    path.resolve(__dirname, "postcss.config.js"),
-    path.resolve(npmRoot, "postcss.config.js"),
-  ],
-  [
-    path.resolve(__dirname, "imagemin.config.js"),
-    path.resolve(npmRoot, "imagemin.config.js"),
+    resolve(__dirname, "imagemin.config.js"),
+    resolve(npmRoot, "imagemin.config.js"),
   ],
 ];
 
 const appends = [
-  [path.resolve(__dirname, ".env"), path.resolve(npmRoot, ".env.development")],
+  [resolve(__dirname, ".env"), resolve(npmRoot, ".env.development")],
 ];
 
 creates.map((e) => {

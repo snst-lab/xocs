@@ -7,11 +7,11 @@ xocx
 =============
 > `[klɔ'ks]`
 > ---
-> Simple and lightweight source processor (SASS, SCSS, Imagemin etc.), utilities (watcher, BrowserSync, FTP client, etc.), and minimal task runner.   
+> Simple and lightweight source processor (SASS, SCSS, Imagemin etc.), utilities (watcher, BrowserSync, FTP client, etc.), and minimal task runner, 
 >
-> Which makes more easy for you to Front-end development or WEB production.
+> which makes more easy for you to Front-end development or WEB production,
 >
-> Aiming to an alternative of [laravelmix](https://github.com/JeffreyWay/laravel-mix), [gulp](https://github.com/gulpjs/gulp), and so on.
+> aiming to an alternative of [laravelmix](https://github.com/JeffreyWay/laravel-mix), [gulp](https://github.com/gulpjs/gulp), and so on.
 
 
 ## Screenshot
@@ -37,7 +37,7 @@ xocx
 >
 > [Contributing](#contributing)  
 >
-> [License](#license)
+> [License](#licence)
 
 <br>
 

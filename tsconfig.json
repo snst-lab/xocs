@@ -21,7 +21,6 @@
     },
     "types": [
       "node",
-      "app-root-path",
       "ftp",
       "browser-sync",
       "imagemin-mozjpeg",

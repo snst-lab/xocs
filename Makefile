@@ -37,7 +37,7 @@ install:
 	@npm set progress=true
 
 dependencies:
-	@yarn add @types/app-root-path @types/browser-sync @types/ftp @types/imagemin-gifsicle @types/imagemin-mozjpeg @types/imagemin-svgo @types/imagemin-webp @types/node app-root-path autoprefixer browser-sync chalk chokidar dotenv ftp imagemin imagemin-pngquant imagemin-mozjpeg imagemin-gifsicle imagemin-svgo imagemin-webp ora postcss postcss-cli sass
+	@yarn add @types/browser-sync @types/ftp @types/imagemin-gifsicle @types/imagemin-mozjpeg @types/imagemin-svgo @types/imagemin-webp @types/node autoprefixer browser-sync chalk chokidar dotenv ftp imagemin imagemin-pngquant imagemin-mozjpeg imagemin-gifsicle imagemin-svgo imagemin-webp ora postcss postcss-cli sass
 
 devDependencies:
 	@yarn add -D @types/chai @types/mocha @typescript-eslint/eslint-plugin @typescript-eslint/parser chai eslint eslint-config-prettier eslint-plugin-prettier mocha prettier stylelint  stylelint-config-recess-order ts-node tsc tsc-alias tsconfig-paths typescript

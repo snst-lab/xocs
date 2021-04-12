@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-import { path as npmRoot } from "app-root-path";
 import { log } from "@utils/index";
-import { basename } from "path";
+import { resolve, basename } from "path";
 import { GlobSync } from "glob";
 import { existsSync } from "fs";
 
 try {
   let procedure: string | null = null;
 
+  const npmRoot = resolve(process.cwd());
   const args = process.argv.filter((e, i) => i > 1);
 
   args.forEach((e, i) => {
@@ -28,7 +28,9 @@ try {
 
   if (!procedure) {
     throw new Error(
-      `Procedure file not found in npm root such as ${log.yellow("xocs.js")}`
+      `Procedure file not found in current directory such as ${log.yellow(
+        "xocs.mix.js"
+      )}`
     );
   }
 

@@ -1,8 +1,7 @@
 import { Options } from "@types";
 import { iConfig } from "@interfaces/index";
 import { log } from "@utils/index";
-import { path as npmRoot } from "app-root-path";
-import { GlobSync } from "glob";
+import { resolve } from "path";
 /**
  *
  *
@@ -12,11 +11,13 @@ import { GlobSync } from "glob";
 export class Config implements iConfig {
   public defaultOptions: Options;
   public options: Options;
+  public npmRoot: string;
   /**
    * Creates an instance of Config.
    * @memberof Config
    */
   constructor() {
+    this.npmRoot = resolve(process.cwd());
     this.defaultOptions = {
       env: ".env",
       srcRoot: "src",
@@ -49,7 +50,7 @@ export class Config implements iConfig {
         {
           ext: "css",
         },
-        require(npmRoot + "/postcss.config") || {}
+        require(this.npmRoot + "/postcss.config") || {}
       ),
       imagemin: Object.assign(
         {
@@ -60,7 +61,7 @@ export class Config implements iConfig {
           svgo: {},
           webp: {},
         },
-        require(npmRoot + "/imagemin.config") || {}
+        require(this.npmRoot + "/imagemin.config") || {}
       ),
     };
     this.options = this.defaultOptions;
@@ -75,7 +76,7 @@ export class Config implements iConfig {
     this.options = Object.assign(this.defaultOptions, options);
     // eslint-disable-next-line
     require("dotenv").config({
-      path: npmRoot + "/" + this.options.env,
+      path: this.npmRoot + "/" + this.options.env,
     });
   }
   /**
@@ -88,7 +89,7 @@ export class Config implements iConfig {
     this.options = Object.assign(this.defaultOptions, options);
     // eslint-disable-next-line
     require("dotenv").config({
-      path: npmRoot + "/" + this.options.env,
+      path: this.npmRoot + "/" + this.options.env,
     });
     log.line();
     console.log(this.options);
