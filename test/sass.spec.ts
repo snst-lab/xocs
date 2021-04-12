@@ -1,10 +1,10 @@
 import { expect, assert } from "chai";
 import * as fs from "fs";
-import { Thread } from "../dist";
-import { sleep } from "../dist/utils";
+import { Thread } from "../src";
+import { sleep } from "../src/utils";
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const xocs = require("../dist").default;
+const xocs = require("../src").default;
 
 xocs.init({
   srcRoot: "test/src",

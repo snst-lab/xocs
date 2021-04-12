@@ -39,7 +39,7 @@
     "build": "npx tsc && npx tsc-alias & cp -a src/scripts/. dist/scripts/",
     "cli:ts": "ts-node dist/bin/cli.js -p xocs.test.ts",
     "cli:js": "node dist/bin/cli.js -p xocs.test.js",
-    "test": "npm run build && npx mocha -r ts-node/register -r tsconfig-paths/register --timeout 30000 test/index.ts",
+    "test": "npx mocha -r ts-node/register -r tsconfig-paths/register --timeout 30000 test/index.ts",
     "prepublishOnly": "make prepublish",
     "postpublish": "make postpublish",
     "preinstall": "",
