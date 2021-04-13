@@ -1,4 +1,4 @@
-[![node version](https://img.shields.io/node/v/xocs.svg)](https://img.shields.io/node/v/xocs.svg)
+[![node version](https://raw.githubusercontent.com/snst-lab/xocs/master/docs/img/node_version.svg)](https://img.shields.io/node/v/xocs.svg)
 [![npm version](https://badge.fury.io/js/xocs.svg)](https://badge.fury.io/js/xocs)
 [![Build Status](https://travis-ci.org/snst-lab/xocs.svg?branch=master)](https://travis-ci.org/snst-lab/xocs)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6d44bcecab7a42579f605b217948efc6)](https://www.codacy.com/gh/snst-lab/xocs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=snst-lab/xocs&amp;utm_campaign=Badge_Grade)

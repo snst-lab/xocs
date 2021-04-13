@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "private": false,
   "description": "Simple and lightweight source processor, utilities, and minimal task runner, which is useful for Front-end developments or Web productions",
   "keywords": [
@@ -16,6 +16,10 @@
     "ftp",
     "browser-sync"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snst-lab/xocs"
+  },
   "author": "Shunsuke Tanaka",
   "license": "Apache-2.0",
   "engines": {
