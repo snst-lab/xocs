@@ -98,11 +98,10 @@ export class Remote implements iRemote {
       } else {
         log.info(`Remote connection restarted`);
       }
-      //
-      setTimeout(() => {
-        this.ftp.end();
-        this.active = false;
-      }, this.timeout);
+      // setTimeout(() => {
+      //   this.ftp.end();
+      //   this.active = false;
+      // }, this.timeout);
       //
       return true;
       //

@@ -1,12 +1,12 @@
 [![node version](https://raw.githubusercontent.com/snst-lab/xocs/master/docs/img/node_version.svg)](https://img.shields.io/node/v/xocs.svg)
-[![npm version](https://badge.fury.io/js/xocs.svg)](https://badge.fury.io/js/xocs)
+[![npm version](https://badge.fury.io/js/xocs.svg)](https://www.npmjs.com/package/xocs)
 [![Build Status](https://travis-ci.org/snst-lab/xocs.svg?branch=master)](https://travis-ci.org/snst-lab/xocs)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6d44bcecab7a42579f605b217948efc6)](https://www.codacy.com/gh/snst-lab/xocs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=snst-lab/xocs&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # xocx
 
-> #### `[klɔ'ks]`
+> #### `[klɔ'ks]`  
 >
 > ---
 >

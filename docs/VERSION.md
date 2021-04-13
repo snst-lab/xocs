@@ -81,3 +81,9 @@ The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
 - improve - downgrade node version 10.17 -> 10.13 <br>
 </details>
 
+<details open>
+<summary>11</summary>
+
+- fix - disable ftp disconnect<br>
+</details>
+
