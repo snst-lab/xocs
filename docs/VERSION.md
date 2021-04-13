@@ -62,5 +62,22 @@ The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
 - add - Watcher.throttle
 </details>
 
+<details open>
+<summary>3</summary>
 
+- improve - npm root path expression<br>
+- improve - Watcher.runAtStart
+</details>
+
+<details open>
+<summary>7</summary>
+
+- fix - install scripts<br>
+</details>
+
+<details open>
+<summary>9</summary>
+
+- improve - downgrade node version 10.17 -> 10.13 <br>
+</details>
 

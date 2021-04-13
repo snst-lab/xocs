@@ -5,17 +5,17 @@
 
 xocx 
 =============
-> `[klɔ'ks]`
+> #### `[klɔ'ks]`
 > ---
 > Simple and lightweight source processor (SASS, SCSS, Imagemin etc.), utilities (watcher, BrowserSync, FTP client, etc.), and minimal task runner, 
 >
 > which makes more easy for you to Front-end developments or Web productions,
 >
-> aiming to an alternative of [laravelmix](https://github.com/JeffreyWay/laravel-mix), [gulp](https://github.com/gulpjs/gulp), and so on.
+> aiming to an alternative of [laravelmix](https://github.com/JeffreyWay/laravel-mix), [gulp](https://github.com/gulpjs/gulp), [grunt](https://github.com/gruntjs/grunt),... and so on.
 
 
 ## Screenshot
-<img src="docs/img/screenshot.gif">
+<img src="https://raw.githubusercontent.com/snst-lab/xocs/master/docs/img/screenshot.gif">
 
 <br>
 
