@@ -4,7 +4,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6d44bcecab7a42579f605b217948efc6)](https://www.codacy.com/gh/snst-lab/xocs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=snst-lab/xocs&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# xocx
+# xocs
 
 > #### `[klɔ'ks]`  
 >

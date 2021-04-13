@@ -16,11 +16,15 @@ const inject = {
   normNoDot: function (pathStr: Path): Path {
     let buffer: Path = pathStr;
     buffer = buffer.replace(/\\/g, "/");
-    if (/^\.\//.test(buffer)) {
-      buffer = buffer.replace("./", "");
-    }
-    if (/\/$/.test(buffer)) {
-      buffer = buffer.slice(0, -1);
+    if (buffer === ".") {
+      buffer = "";
+    } else {
+      if (/^\.\//.test(buffer)) {
+        buffer = buffer.replace("./", "");
+      }
+      if (/\/$/.test(buffer)) {
+        buffer = buffer.slice(0, -1);
+      }
     }
     return buffer;
   },

@@ -120,20 +120,16 @@ export class Remote implements iRemote {
    * @memberof Remote
    */
   private calcRemotePath(_localPath: Path, _remoteDir?: Path): [Path, Path] {
-    let remotePath: Path;
-    let remoteDir: Path;
-
     _localPath = path.normNoDot(_localPath);
-    if (new RegExp(this.localRoot).test(_localPath)) {
-      remotePath = _localPath.replace(this.localRoot, this.remoteRoot);
-    } else {
-      remotePath = this.remoteRoot + "/" + _localPath;
-    }
-    if (typeof _remoteDir === "undefined") {
-      remoteDir = path.dirname(remotePath);
-    } else {
-      remoteDir = path.normNoDot(_remoteDir);
-    }
+
+    const remotePath =
+      this.remoteRoot + "/" + _localPath.replace(this.localRoot, "");
+
+    const remoteDir =
+      typeof _remoteDir === "undefined"
+        ? path.dirname(remotePath)
+        : path.normNoDot(_remoteDir);
+
     return [remotePath, remoteDir];
   }
   /**

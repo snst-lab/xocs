@@ -87,3 +87,9 @@ The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
 - fix - disable ftp disconnect<br>
 </details>
 
+
+<details open>
+<summary>13</summary>
+
+- refactor - remote path calculation<br>
+</details>
