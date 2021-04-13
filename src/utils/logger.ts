@@ -5,7 +5,7 @@ import * as chalk from "chalk";
  * @class Logger
  */
 class Logger {
-  private spinner;
+  private spinner: ora.Ora;
   /**
    * Creates an instance of Logger.
    */
@@ -16,7 +16,7 @@ class Logger {
    * @param {*} message
    * @return {*}
    */
-  typecast(message: any) {
+  private typecast(message: any): string {
     return typeof message === "string"
       ? message
       : JSON.stringify(message, null, 2);
@@ -24,7 +24,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  loading(message: any) {
+  public loading(message: any): void {
     this.spinner.stop();
     this.spinner = ora(this.typecast(message));
     this.spinner.start();
@@ -32,7 +32,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  ready(message: any) {
+  public ready(message: any): void {
     this.spinner.stop();
     this.spinner = ora(
       chalk.black.bgCyan("READY") + " " + this.typecast(message)
@@ -42,7 +42,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  info(message: any) {
+  public info(message: any): void {
     this.spinner.stop();
     this.spinner.info(
       chalk.black.bgBlue("INFO") + " " + this.typecast(message)
@@ -51,7 +51,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  done(message: any) {
+  public done(message: any): void {
     this.spinner.succeed(
       chalk.black.bgGreen("DONE") + " " + this.typecast(message)
     );
@@ -59,15 +59,15 @@ class Logger {
   /**
    * @param {*} message
    */
-  fail(message: any) {
+  public fail(message: any): void {
     this.spinner.fail(chalk.black.bgRed("FAIL") + " " + this.typecast(message));
   }
 
-  stop() {
+  public stop(): void {
     this.spinner.stop();
   }
 
-  line() {
+  public line(): void {
     console.log(
       chalk.gray(
         "--------------------------------------------------------------"
@@ -75,22 +75,22 @@ class Logger {
     );
   }
 
-  green(message: any) {
+  green(message: any): string {
     return chalk.green(message);
   }
-  blue(message: any) {
+  blue(message: any): string {
     return chalk.blue(message);
   }
-  cyan(message: any) {
+  cyan(message: any): string {
     return chalk.cyan(message);
   }
-  yellow(message: any) {
+  yellow(message: any): string {
     return chalk.yellow(message);
   }
-  magenta(message: any) {
+  magenta(message: any): string {
     return chalk.magenta(message);
   }
-  red(message: any) {
+  red(message: any): string {
     return chalk.redBright(message);
   }
 }
