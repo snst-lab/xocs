@@ -20,7 +20,7 @@ xocs.task("compile", () => {
     $.copy(path, "pages");
   });
   xocs.watch(srcRoot + "/assets/js/**/*.js", ($) => {
-    $.copy();
+    $.babel();
   });
   xocs.watch(srcRoot + "/assets/css/**/*.scss", ($) => {
     $.sass().postcss();

@@ -20,7 +20,7 @@ xocs.task("compile", () => {
     thread.copy(path, "pages");
   });
   xocs.watch(srcRoot + "/assets/js/**/*.js", (thread: Thread) => {
-    thread.copy();
+    thread.babel();
   });
   xocs.watch(srcRoot + "/assets/css/**/*.scss", (thread: Thread) => {
     thread.sass().postcss();

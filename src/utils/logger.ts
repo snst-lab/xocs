@@ -24,7 +24,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  public loading(message: any): void {
+  loading(message: any): void {
     this.spinner.stop();
     this.spinner = ora(this.typecast(message));
     this.spinner.start();
@@ -32,7 +32,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  public ready(message: any): void {
+  ready(message: any): void {
     this.spinner.stop();
     this.spinner = ora(
       chalk.black.bgCyan("READY") + " " + this.typecast(message)
@@ -42,7 +42,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  public info(message: any): void {
+  info(message: any): void {
     this.spinner.stop();
     this.spinner.info(
       chalk.black.bgBlue("INFO") + " " + this.typecast(message)
@@ -51,7 +51,7 @@ class Logger {
   /**
    * @param {*} message
    */
-  public done(message: any): void {
+  done(message: any): void {
     this.spinner.succeed(
       chalk.black.bgGreen("DONE") + " " + this.typecast(message)
     );
@@ -59,15 +59,15 @@ class Logger {
   /**
    * @param {*} message
    */
-  public fail(message: any): void {
+  fail(message: any): void {
     this.spinner.fail(chalk.black.bgRed("FAIL") + " " + this.typecast(message));
   }
 
-  public stop(): void {
+  stop(): void {
     this.spinner.stop();
   }
 
-  public line(): void {
+  line(): void {
     console.log(
       chalk.gray(
         "--------------------------------------------------------------"

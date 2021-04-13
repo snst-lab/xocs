@@ -23,6 +23,7 @@ export interface Options {
   copy?: CopyOption;
   sass?: SassOption;
   postcss?: PostCssOption;
+  babel?: BabelOption;
   imagemin?: ImageMinOption;
 }
 
@@ -30,6 +31,7 @@ export type ProcessOption =
   | CopyOption
   | SassOption
   | PostCssOption
+  | BabelOption
   | ImageMinOption;
 
 /**
@@ -76,6 +78,15 @@ export interface CopyOption {
  * @interface SassOption
  */
 export interface SassOption {
+  ext?: string;
+}
+/**
+ *
+ *
+ * @export
+ * @interface BabelOption
+ */
+export interface BabelOption {
   ext?: string;
 }
 /**

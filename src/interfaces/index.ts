@@ -9,4 +9,5 @@ export * from "./remote";
 export * from "./copy";
 export * from "./sass";
 export * from "./postcss";
+export * from "./babel";
 export * from "./imagemin";

@@ -17,10 +17,13 @@ describe("Sass compile and postcss", () => {
   it("Single file compile", async () => {
     const src = srcRoot + "/assets/css/sass.scss";
     const dist = publicRoot + "/assets/css/sass.css";
+
     fs.existsSync(dist) ? fs.unlinkSync(dist) : false;
     fs.writeFileSync(src, "body{display:grid;}");
+
     xocs.sass(srcRoot + "/assets/css/sass.scss").postcss();
     await sleep(500);
+
     expect(fs.existsSync(dist)).to.eq(true);
   });
   //
@@ -30,12 +33,14 @@ describe("Sass compile and postcss", () => {
     const dist1 = publicRoot + "/assets/css/sass.css";
     const src2 = srcRoot + "/assets/css/sass2.scss";
     const dist2 = publicRoot + "/assets/css/sass2.css";
+
     fs.existsSync(dist1) ? fs.unlinkSync(dist1) : false;
     fs.existsSync(dist2) ? fs.unlinkSync(dist2) : false;
     fs.writeFileSync(src1, "body{display:grid;}");
     fs.writeFileSync(src2, "body{display:grid;}");
-    xocs.sass(srcRoot + "/**/*.scss").postcss();
-    await sleep(1000);
+
+    xocs.sass(srcRoot + "/assets/css/**/*.scss").postcss();
+    await sleep(500);
 
     expect(fs.existsSync(dist1)).to.eq(true);
     expect(fs.existsSync(dist2)).to.eq(true);
@@ -53,11 +58,16 @@ describe("Sass compile and postcss", () => {
     fs.writeFileSync(src1, "body{display:grid;}");
     fs.writeFileSync(src2, "body{display:grid;}");
 
-    const watch = xocs.watch(srcRoot + "/**/*.scss", true, (thread: Thread) => {
-      thread.sass().postcss();
-    });
+    const watch = xocs.watch(
+      srcRoot + "/assets/css/**/*.scss",
+      true,
+      (thread: Thread) => {
+        thread.sass().postcss();
+      }
+    );
     watch.end();
     await sleep(1000);
+
     expect(fs.existsSync(dist1)).to.eq(true);
     expect(fs.existsSync(dist2)).to.eq(true);
   });

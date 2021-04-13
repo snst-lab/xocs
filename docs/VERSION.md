@@ -47,13 +47,16 @@ The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
 ### Version 0.x
 
 - [x] 1. add Watcher, FTP, Task runner,Processor (SCSS, Postcss, Imagemin) support 
-- []  2. add SFTP support
-- []  3. add Babel transpiler
+- [x]  2. add Babel transpiler
+- []  3. add SFTP support
 - []  4. add HTML copy with appending cache parameter 
 
 <br>
 
 >### Patch
+### Version 0.2.x
+
+
 ### Version 0.1.x
 <details open>
 <summary>1</summary>

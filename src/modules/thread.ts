@@ -6,6 +6,7 @@ import {
   CopyOption,
   SassOption,
   PostCssOption,
+  BabelOption,
   ImageMinOption,
 } from "@types";
 import {
@@ -15,6 +16,7 @@ import {
   iCopy,
   iSass,
   iPostCss,
+  iBabel,
   iImageMin,
 } from "@interfaces/index";
 import { Watcher, Browser, Remote, PathMapper } from "@modules/index";
@@ -211,6 +213,29 @@ export class Thread implements iThread {
       | [srcPath: Path, distPath: Path, options: PostCssOption]
   ): Thread {
     return this.process<iPostCss>("postcss", ...args);
+  }
+  /**
+   *
+   *
+   * @param {(...[]
+   *       | [srcPath: Path]
+   *       | [options: BabelOption]
+   *       | [srcPath: Path, options: BabelOption]
+   *       | [srcPath: Path, distPath: Path]
+   *       | [srcPath: Path, distPath: Path, options: BabelOption])} args
+   * @return {*}  {Thread}
+   * @memberof Thread
+   */
+  babel(
+    ...args:
+      | []
+      | [srcPath: Path]
+      | [options: BabelOption]
+      | [srcPath: Path, options: BabelOption]
+      | [srcPath: Path, distPath: Path]
+      | [srcPath: Path, distPath: Path, options: BabelOption]
+  ): Thread {
+    return this.process<iBabel>("babel", ...args);
   }
   /**
    *

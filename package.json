@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "private": false,
   "description": "Simple and lightweight source processor, utilities, and minimal task runner, which is useful for Front-end developments or Web productions",
   "keywords": [
@@ -50,6 +50,9 @@
     "postinstall": "node scripts/postinstall.js"
   },
   "dependencies": {
+    "@babel/cli": "7.13.14",
+    "@babel/core": "7.13.15",
+    "@babel/preset-env": "7.13.15",
     "@types/browser-sync": "^2.26.1",
     "@types/ftp": "^0.3.31",
     "@types/imagemin-gifsicle": "^7.0.0",
@@ -70,6 +73,7 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
     "imagemin-webp": "^6.0.0",
+    "npm": "7.9.0",
     "ora": "^5.4.0",
     "postcss": "^8.2.8",
     "postcss-cli": "^8.3.1",

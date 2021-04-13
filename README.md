@@ -14,7 +14,7 @@
 >
 > which makes more easy for you to Front-end developments or Web productions,
 >
-> aiming to an alternative of [laravelmix](https://github.com/JeffreyWay/laravel-mix), [gulp](https://github.com/gulpjs/gulp), [grunt](https://github.com/gruntjs/grunt),... and so on.
+> aiming to be an alternative of [laravelmix](https://github.com/JeffreyWay/laravel-mix), [gulp](https://github.com/gulpjs/gulp), [grunt](https://github.com/gruntjs/grunt),... and so on.
 
 ## Screenshot
 
@@ -54,6 +54,7 @@
 
 > - SASS, SCSS Compile
 > - postcss
+> - babel
 > - Imagemin ( png, jpg, gif, svg, webp)
 
 ### Utility
@@ -71,13 +72,13 @@
 
 ### 1. Run command below to install npm modules
 
-#### Option 1. Yarn
+> #### Option 1. Yarn
 
 ```sh
  $ yarn add -D xocs
 ```
 
-#### Option 2. NPM
+> #### Option 2. NPM
 
 ```sh
  $ npm install -D xocs
@@ -90,17 +91,18 @@
 |-- .env                 //  Append setting templates includes FTP and BrowserSync to '.env'
 |                        //   ( will genereate unless already exists )
 |-- .browserslistrc      //  Generate unless '.browserslistrc' already exists
+|-- babel.config.js      //  Generate unless 'babel.config.js' already exists
 |-- imagemin.config.js   //  Generate unless 'imagemin.config.js' already exists
 |-- postcss.config.js    //  Generate unless 'postcss.config.js' already exists
-|-- xocs.mix.js         //  Procedure file ( will genereate unless already exists )
+|-- xocs.mix.js          //  Procedure file ( will genereate unless already exists )
 ```
 
-> Procedure file's name rule is `xocs.***.js` or `xocs.***.ts`.
-> If mutliple procedure files exist, these are prioritized in alphabetical order.
+Procedure file's name rule is `xocs.***.js` or `xocs.***.ts`.  
+If mutliple procedure files exist, these are prioritized in alphabetical order.
 
 ### 3. Edit procedure file
 
-> Edit 'xocs.mix.js' to define source directory root (srcRoot) and build directory root (publicRoot)
+Edit `xocs.mix.js` to define source directory root (srcRoot) and build directory root (publicRoot)
 
 ```js
 const xocs = require('xocs').default;
@@ -118,7 +120,7 @@ xocs.init({
  */
 ```
 
-> See [below section](#usage) for how to write additional procedures.
+See [below section](#usage) for how to write additional procedures.
 
 ### 4. Run CLI
 
@@ -128,9 +130,9 @@ xocs.init({
 
 ---
 
-#### Optional
+> #### Option: Global Install
 
-> If you need run CLI command without 'npx', install globally in advance
+If you need run CLI command without `npx`, install globally in advance
 
 ```sh
  $ npm install -g xocs
@@ -155,18 +157,24 @@ xocs.init({
 });
 ```
 
-### SCSS Compile
+### Compile SCSS
 
 ```js
 // Compile scss files specified with 'glob pattern' (!no 'regex pattern')
 xocs.sass('src/**/*.scss');
 ```
 
-### SCSS Compile with postcss
+### Compile SCSS and PostCss
 
 ```js
 // Proccess with postcss based on options in 'postcss.config.js'
 xocs.sass('src/**/*.scss').postcss();
+```
+
+### Transpile JavaScript
+```js
+// Proccess with babel based on options in 'babel.config.js'
+xocs.babel('src/**/*.js');
 ```
 
 ### Image Optimization
@@ -191,8 +199,8 @@ xocs.watch(['src/**/*.sass', 'src/**/*.scss'], ($) => {
 });
 ```
 
-> Hear, `$` which is a argument of watch property method, has type named `Thread`.  
-> `Thread` have same functions of `xocs` itself except for it includes the information of target files of watcher.
+Hear, `$` which is a argument of watch property method, has type named `Thread`.  
+`Thread` have same functions of `xocs` itself except for it includes the information of target files of watcher.
 
 ### BrowserSync
 
@@ -207,7 +215,7 @@ xocs.watch(['src/**/*.sass', 'src/**/*.scss'], ($) => {
 });
 ```
 
-> You can also write as below
+You can also write as below
 
 ```js
 // Init BrowserSync
@@ -221,9 +229,9 @@ xocs.watch('src/**/*.@(sass|scss)', ($) => {
 
 ### FTP upload
 
-> Edit `.env` file to path values to `process.env`  
-> and ignore git staging of `.env` with `.gitignore` (recommend)  
-> ( `xocs` already includes [dotenv](https://github.com/motdotla/dotenv) module as dependincies )
+ Edit `.env` file to path values to `process.env`  
+ and ignore git staging of `.env` with `.gitignore` (recommend)  
+ > `xocs` already includes [dotenv](https://github.com/motdotla/dotenv) module as dependincies 
 
 ```js
 // Create FTP connection
@@ -247,7 +255,7 @@ xocs.watch(['src/**/*.sass', 'src/**/*.scss'], ($) => {
 });
 ```
 
-> You can also write as below, watching public directory insted of src directory
+You can also write as below, watching public directory insted of src directory.
 
 ```js
 // Create FTP connection
@@ -268,9 +276,9 @@ xocs.watch('public/**/*', ($) => {
 
 ### Task Runner
 
-#### Usage1: Specify tasks from CLI
+> #### Usage1: Specify tasks from CLI
 
-> Register task in `xocs.mix.js`
+Register tasks in `xocs.mix.js`
 
 ```js
 xocs.task('compile', () => {
@@ -279,15 +287,17 @@ xocs.task('compile', () => {
 });
 ```
 
-> Run task from CLI
+Run task from CLI
 
 ```sh
 $ npx xocs compile
 ```
 
-#### Usage2: Specify tasks in Procedure
+<br>
 
-> Register task in `xocs.mix.js`
+> #### Usage2: Specify tasks in Procedure
+
+Register tasks in `xocs.mix.js`
 
 ```js
 xocs.task('compile:html', () => {
@@ -299,7 +309,7 @@ xocs.task('compile:html', () => {
 
 xocs.task('compile:js', () => {
   xocs.watch('src/**/*.js', ($) => {
-    $.copy();
+    $.babel();
   });
 });
 
@@ -340,7 +350,7 @@ xocs.task('preview', () => {
 xocs.run('compile:html', 'compile:js', 'compile:css', 'compile:img', 'preview');
 ```
 
-> Run task from CLI
+Run task from CLI
 
 ```sh
 $ npx xocs
@@ -350,8 +360,8 @@ $ npx xocs
 
 ## TypeScript_Support
 
-> You can write procudure file in TypeScript replacing extention from `.js` to `.ts`  
-> A `xocs.mix.ts` example is below
+ You can write procudure file in TypeScript replacing extention from `.js` to `.ts`.
+ `xocs.mix.ts` example is below.
 
 ```ts
 import xocs, { Thread } from 'xocs';
@@ -378,7 +388,7 @@ xocs.watch(srcRoot + '/assets/img/**/*.@(jpg|jpeg|png|gif|svg|webp)', ($: Thread
 ## Version
 
 We manage the project version on [VERSION.md](./docs/VERSION.md)
-The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
+The versioning scheme we refer is [Semantic Versioning](https://semver.org/).
 
 <br>
 

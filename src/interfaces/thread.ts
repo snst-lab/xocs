@@ -4,6 +4,7 @@ import {
   CopyOption,
   SassOption,
   PostCssOption,
+  BabelOption,
   ImageMinOption,
 } from "@types";
 import { Thread } from "@modules/index";
@@ -57,6 +58,15 @@ export interface iThread {
       | [distPath: Path, options: PostCssOption]
       | [srcPath: Path, distPath: Path]
       | [srcPath: Path, distPath: Path, options: PostCssOption]
+  ): Thread;
+  babel(
+    ...args:
+      | []
+      | [srcPath: Path]
+      | [options: BabelOption]
+      | [srcPath: Path, options: BabelOption]
+      | [srcPath: Path, distPath: Path]
+      | [srcPath: Path, distPath: Path, options: BabelOption]
   ): Thread;
   imagemin(
     ...args:

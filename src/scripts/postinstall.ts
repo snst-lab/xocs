@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import { existsSync, copyFileSync, readFileSync, appendFileSync } from "fs";
 import { resolve } from "path";
 import { log } from "@utils/index";
 
@@ -11,6 +11,7 @@ const creates = [
     resolve(__dirname, "postcss.config.js"),
     resolve(npmRoot, "postcss.config.js"),
   ],
+  [resolve(__dirname, "babel.config.js"), resolve(npmRoot, "babel.config.js")],
   [
     resolve(__dirname, "imagemin.config.js"),
     resolve(npmRoot, "imagemin.config.js"),
@@ -22,11 +23,11 @@ const appends = [
 ];
 
 creates.map((e) => {
-  if (!fs.existsSync(e[1])) {
+  if (!existsSync(e[1])) {
     log.ready(
       log.green(`File copying ${log.yellow(e[0])} => ${log.yellow(e[1])}`)
     );
-    fs.copyFileSync(e[0], e[1]);
+    copyFileSync(e[0], e[1]);
     log.done(
       log.green(`File copied  ${log.yellow(e[0])} => ${log.yellow(e[1])}`)
     );
@@ -34,11 +35,11 @@ creates.map((e) => {
 });
 
 appends.map((e) => {
-  if (!fs.existsSync(e[1])) {
+  if (!existsSync(e[1])) {
     log.ready(
       log.green(`File copying ${log.yellow(e[0])} => ${log.yellow(e[1])}`)
     );
-    fs.copyFileSync(e[0], e[1]);
+    copyFileSync(e[0], e[1]);
     log.done(
       log.green(`File copied  ${log.yellow(e[0])} => ${log.yellow(e[1])}`)
     );
@@ -46,8 +47,8 @@ appends.map((e) => {
     log.ready(
       log.green(`Appending ${log.yellow(e[0])} => ${log.yellow(e[1])}`)
     );
-    const src = fs.readFileSync(e[0], "utf8");
-    fs.appendFileSync(e[1], "\n\n" + src);
+    const src = readFileSync(e[0], "utf8");
+    appendFileSync(e[1], "\n\n" + src);
     log.done(log.green(`Appending ${log.yellow(e[0])} => ${log.yellow(e[1])}`));
   }
 });

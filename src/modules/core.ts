@@ -7,9 +7,17 @@ import {
   CopyOption,
   SassOption,
   PostCssOption,
+  BabelOption,
   ImageMinOption,
 } from "@types";
-import { iCore, iCopy, iSass, iPostCss, iImageMin } from "@interfaces/index";
+import {
+  iCore,
+  iCopy,
+  iSass,
+  iPostCss,
+  iBabel,
+  iImageMin,
+} from "@interfaces/index";
 import {
   Task,
   Thread,
@@ -18,6 +26,7 @@ import {
   Copy,
   Sass,
   PostCss,
+  Babel,
   ImageMin,
 } from "@modules/index";
 import { log } from "@utils/index";
@@ -44,6 +53,7 @@ export class Core implements iCore {
     store.set<iCopy>("copy", new Copy());
     store.set<iSass>("sass", new Sass());
     store.set<iPostCss>("postcss", new PostCss());
+    store.set<iBabel>("babel", new Babel());
     store.set<iImageMin>("imagemin", new ImageMin());
   }
   /**
@@ -214,6 +224,29 @@ export class Core implements iCore {
       | [srcPath: Path, distPath: Path, options: PostCssOption]
   ): Thread {
     return new Thread().postcss(...args);
+  }
+  /**
+   *
+   *
+   * @param {(...[]
+   *       | [srcPath: Path]
+   *       | [options: BabelOption]
+   *       | [srcPath: Path, options: BabelOption]
+   *       | [srcPath: Path, distPath: Path]
+   *       | [srcPath: Path, distPath: Path, options: BabelOption])} args
+   * @return {*}  {Thread}
+   * @memberof Core
+   */
+  babel(
+    ...args:
+      | []
+      | [srcPath: Path]
+      | [options: BabelOption]
+      | [srcPath: Path, options: BabelOption]
+      | [srcPath: Path, distPath: Path]
+      | [srcPath: Path, distPath: Path, options: BabelOption]
+  ): Thread {
+    return new Thread().babel(...args);
   }
   /**
    *

@@ -2,6 +2,7 @@ import { Options } from "@types";
 import { iConfig } from "@interfaces/index";
 import { log } from "@utils/index";
 import { resolve } from "path";
+import { existsSync } from "fs";
 /**
  *
  *
@@ -36,6 +37,7 @@ export class Config implements iConfig {
       browser: {
         open: "external",
         port: 3000,
+        reloadThrottle: 500,
         watch: false,
         ghostMode: false,
         ui: false,
@@ -50,8 +52,11 @@ export class Config implements iConfig {
         {
           ext: "css",
         },
-        require(this.npmRoot + "/postcss.config") || {}
+        this.load("postcss.config")
       ),
+      babel: Object.assign({
+        ext: "js",
+      }),
       imagemin: Object.assign(
         {
           timeout: 8000,
@@ -61,10 +66,22 @@ export class Config implements iConfig {
           svgo: {},
           webp: {},
         },
-        require(this.npmRoot + "/imagemin.config") || {}
+        this.load("imagemin.config")
       ),
     };
     this.options = this.defaultOptions;
+  }
+  /**
+   *
+   *
+   * @private
+   * @param {string} fileName
+   * @return {*}  {NodeRequire}
+   * @memberof Config
+   */
+  private load(fileName: string): NodeRequire {
+    const filePath = this.npmRoot + "/" + fileName;
+    return existsSync(filePath) ? require(filePath) : {};
   }
   /**
    *
