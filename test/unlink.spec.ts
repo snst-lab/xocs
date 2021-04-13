@@ -1,4 +1,4 @@
-import { expect, assert } from "chai";
+import { expect } from "chai";
 import * as fs from "fs";
 import { Path, Thread } from "../src";
 import { sleep } from "../src/utils";
