@@ -1,8 +1,7 @@
 import { Path, PostCssOption } from "@types";
 import { iPostCss } from "@interfaces/index";
 import { Processor } from "@modules/index";
-import { log } from "@utils/index";
-import { execSync } from "child_process";
+import { log, exec } from "@utils/index";
 import conf from "./config";
 /**
  *
@@ -36,7 +35,7 @@ export class PostCss extends Processor implements iPostCss {
     }
     log.ready(`Now processing postcss from: ${log.yellow(_srcPath)}`);
 
-    execSync(
+    exec(
       `npx postcss ${_srcPath} -o ${_distPath} ${this.isDev ? "" : "--no-map"}`
     );
 

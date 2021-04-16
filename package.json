@@ -1,8 +1,8 @@
 {
   "name": "xocs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": false,
-  "description": "Simple and lightweight source processor, utilities, and minimal task runner, which is useful for Front-end developments or Web productions",
+  "description": "Simple and lightweight Node.js task runner includes source processor and some utilities, which is useful for Front-end developments or Web productions",
   "keywords": [
     "front-end",
     "web",
@@ -73,7 +73,6 @@
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
     "imagemin-webp": "^6.0.0",
-    "npm": "7.9.0",
     "ora": "^5.4.0",
     "postcss": "^8.2.8",
     "postcss-cli": "^8.3.1",

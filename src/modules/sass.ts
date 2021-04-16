@@ -1,8 +1,7 @@
 import { Path, SassOption } from "@types";
 import { iSass } from "@interfaces/index";
 import { Processor } from "@modules/index";
-import { log } from "@utils/index";
-import { execSync } from "child_process";
+import { log, exec } from "@utils/index";
 import conf from "./config";
 /**
  *
@@ -36,7 +35,7 @@ export class Sass extends Processor implements iSass {
     }
     log.ready(`Now compiling sass from: ${log.yellow(_srcPath)}`);
 
-    execSync(
+    exec(
       `npx sass ${_srcPath} ${_distPath} --style ${
         this.isDev ? "expanded --no-source-map" : "compressed --no-source-map"
       }`

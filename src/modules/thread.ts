@@ -20,12 +20,11 @@ import {
   iImageMin,
 } from "@interfaces/index";
 import { Watcher, Browser, Remote, PathMapper } from "@modules/index";
-import { isGlob, log, normNoDot } from "@utils/index";
+import { isGlob, log, normNoDot, exec } from "@utils/index";
 import conf from "./config";
 import store from "./store";
 import { GlobSync } from "glob";
 import { statSync, renameSync } from "fs";
-import { execSync } from "child_process";
 /**
  *
  *
@@ -268,11 +267,7 @@ export class Thread implements iThread {
    */
   exec(command: string): Thread {
     log.ready(command);
-    execSync(command, {
-      stdio: "inherit",
-    });
-    log.done(command);
-
+    exec(command);
     // const splitedCommand = command.split(" ");
     // const args = splitedCommand.filter((e, i) => i > 0);
 

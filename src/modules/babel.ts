@@ -1,8 +1,7 @@
 import { Path, BabelOption } from "@types";
 import { iBabel } from "@interfaces/index";
 import { Processor } from "@modules/index";
-import { log } from "@utils/index";
-import { execSync } from "child_process";
+import { log, exec } from "@utils/index";
 import conf from "./config";
 /**
  *
@@ -36,7 +35,7 @@ export class Babel extends Processor implements iBabel {
     }
     log.ready(`Now transpiling JavaScript from: ${log.yellow(_srcPath)}`);
 
-    execSync(
+    exec(
       `npx babel ${_srcPath} --out-file ${_distPath} ${
         this.isDev ? "--source-maps" : ""
       }`

@@ -55,7 +55,11 @@ The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
 
 >### Patch
 ### Version 0.2.x
+<details open>
+<summary>1</summary>
 
+- improve - handling of promise rejection for exec<br>
+</details>
 
 ### Version 0.1.x
 <details open>

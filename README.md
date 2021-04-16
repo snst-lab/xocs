@@ -10,7 +10,7 @@
 >
 > ---
 >
-> Simple and lightweight source processor (SASS, SCSS, Imagemin etc.), utilities (watcher, BrowserSync, FTP client, etc.), and minimal task runner,
+> Simple and lightweight Node.js task runner includes source processor (SASS, SCSS, Babel, Imagemin etc.), and some utilities (watcher, BrowserSync, FTP client, etc.),
 >
 > which makes more easy for you to Front-end developments or Web productions,
 >
