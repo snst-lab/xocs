@@ -163,10 +163,7 @@ export class Remote implements iRemote {
           )}]${log.yellow(remotePath)}`
         );
 
-        this.ftp.mkdir(remoteDir, true, (err) => {
-          if (err) {
-            throw new Error(err.message);
-          }
+        this.ftp.mkdir(remoteDir, true, () => {
           this.ftp.put(_localPath, remotePath, (err) => {
             if (err) {
               throw new Error(err.message);

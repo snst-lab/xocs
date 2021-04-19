@@ -61,6 +61,12 @@ The versioning scheme we refer is [Semantic Versioning](https://semver.org/)
 - improve - handling of promise rejection for exec<br>
 </details>
 
+<details open>
+<summary>2</summary>
+
+- fix - mkdir in remote<br>
+</details>
+
 ### Version 0.1.x
 <details open>
 <summary>1</summary>

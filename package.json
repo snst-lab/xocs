@@ -1,6 +1,6 @@
 {
   "name": "xocs",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "description": "Simple and lightweight Node.js task runner includes source processor and some utilities, which is useful for Front-end developments or Web productions",
   "keywords": [
